@@ -7,10 +7,10 @@
 "---------------------------------------------------------------
 
 set number                                              " muestra los números de línea  
-set numberwidth=1                                       " ancho mínimo del campo de número de línea 
+set numberwidth=4                                       " ancho mínimo del campo de número de línea 
 set colorcolumn=80                                      " muestra una línea vertical en la columna 80
 set mouse=a                                             " permite usar el mouse para mover el cursor y seleccionar texto 
-set scrolloff=5                                         " deja siempre 5 líneas visibles alreder del cursor
+set scrolloff=20                                        " deja siempre 10 líneas visibles alreder del cursor
 set showmatch                                           " resulta el paréntesis del sistema o llave coincidente
 set clipboard=unnamedplus                               " usa el portapapeles del sistema (permite copiar/pegar entre Vim y el sistema)
 " set cursorline                                        " resalta la línea actual
@@ -51,10 +51,10 @@ filetype plugin indent on                               " habilita detección de
 
 set nowrap                                              " no hace saltos de línea
 " set wrap                                              " activa el salto de línea visual
-" set linebreak                                         " corta líneas solo entre palabras, no en medio
-" set breakindent                                       " mantiene la indentación al mostrar líneas partidas
-" set breakindentopt=shift:2                            " agrega un margen visual al comienzo de las líneas partidas
-" set showbreak=↳\                                      " símbolo que se muestra al inicio de una línea partida
+set linebreak                                           " corta líneas solo entre palabras, no en medio
+set breakindent                                         " mantiene la indentación al mostrar líneas partidas
+set breakindentopt=shift:2                              " agrega un margen visual al comienzo de las líneas partidas
+set showbreak=↳\                                        " símbolo que se muestra al inicio de una línea partida
 
 "===============================================================
 "  Keyboard shortcuts
@@ -90,7 +90,6 @@ nnoremap <C-A-Up> yyP
 nnoremap <Leader>a ggVG 
 
 " -- desactivar resaltado de palabras encontradas
-" nnoremap <Leader><F3> :nohlsearch<CR>
 nnoremap <silent> <Esc> :nohlsearch<CR>
 
 "---------------------------------------------------------------
@@ -100,10 +99,10 @@ nnoremap <silent> <Esc> :nohlsearch<CR>
 nnoremap <S-ScrollWheelUp> 6zh
 nnoremap <S-ScrollWheelDown> 6zl
 
-nnoremap <A-h> 6zh
-nnoremap <A-l> 6zl
-nnoremap <A-k> 6<C-y>
-nnoremap <A-j> 6<C-e>
+nnoremap <C-h> 4zh
+nnoremap <C-l> 4zl
+nnoremap <C-k> 4<C-y>
+nnoremap <C-j> 4<C-e>
 
 "---------------------------------------------------------------
 " Navegación entre pestañas
@@ -120,6 +119,9 @@ nnoremap <Leader>v :vsplit<CR>
 "---------------------------------------------------------------
 " Formateo de código
 "---------------------------------------------------------------
+
+" Alterna el 'wrap' Y la 'colorcolumn' con <leader>z
+nnoremap <leader>z :set wrap! \| let &colorcolumn = (&colorcolumn == "" ? "80" : "")<CR>
 
 nnoremap <Leader>i :Autoformat<CR>
 
