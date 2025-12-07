@@ -10,7 +10,7 @@ set number                                              " muestra los números d
 set numberwidth=4                                       " ancho mínimo del campo de número de línea 
 set colorcolumn=80                                      " muestra una línea vertical en la columna 80
 set mouse=a                                             " permite usar el mouse para mover el cursor y seleccionar texto 
-set scrolloff=20                                        " deja siempre 10 líneas visibles alreder del cursor
+set scrolloff=2                                         " deja siempre 2 líneas visibles alreder del cursor
 set showmatch                                           " resulta el paréntesis del sistema o llave coincidente
 set clipboard=unnamedplus                               " usa el portapapeles del sistema (permite copiar/pegar entre Vim y el sistema)
 " set cursorline                                        " resalta la línea actual
@@ -141,6 +141,7 @@ nnoremap <Leader>f :NERDTreeFind<CR>
 " -- identline
 let g:indentLine_color_term = 239
 " let g:indentLine_char = ┆'
+let g:indentLine_setConceal = 0
 
 " -- vim-airline 
 let g:airline_theme='simple'
@@ -152,6 +153,7 @@ let g:NERDSpaceDelims = 1
 " let g:autoformat_verbosemode = 1
 " let g:formatdef_clangformat_c = '"clang-format"'
 " let g:formatters_c = ['clangformat_c']
+let g:formatters_markdown = ['prettier']
 
 call plug#begin()
 
@@ -172,3 +174,9 @@ call plug#end()
 "===============================================================
 
 highlight Search cterm=NONE ctermfg=black ctermbg=yellow gui=NONE guifg=black guibg=yellow
+
+"===============================================================
+" Deshabilitación
+"===============================================================
+
+autocmd FileType json,jsonc IndentLinesDisable
